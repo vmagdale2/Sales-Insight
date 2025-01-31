@@ -1,17 +1,27 @@
 import os
 
-# Paths
-DATA_DIR = "data"
+# Define the root project directory (Sales-Insight)
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Paths relative to the root directory
+DATA_DIR = os.path.join(ROOT_DIR, "data")
 RAW_DIR = os.path.join(DATA_DIR, "raw")
 README_PATH = os.path.join(DATA_DIR, "README.md")
 
 def get_total_raw_size():
     """Calculates total size of all files in the raw/ folder."""
     total_size = 0
+    if not os.path.exists(RAW_DIR):
+        print(f"⚠️ Error: The 'raw/' directory does not exist. Checked path: {RAW_DIR}")
+        return "0.00 MB"
+
     for root, _, files in os.walk(RAW_DIR):
         for file in files:
             file_path = os.path.join(root, file)
-            total_size += os.path.getsize(file_path)  # Get size in bytes
+            if os.path.exists(file_path):
+                total_size += os.path.getsize(file_path)  # Get size in bytes
+            else:
+                print(f"⚠️ Warning: File not found: {file_path}")
 
     # Convert to MB with 2 decimal places
     return f"{total_size / (1024 * 1024):.2f} MB"
@@ -19,7 +29,7 @@ def get_total_raw_size():
 def update_readme():
     """Replaces 'Size: X MB' in README.md with the total size of raw/ folder."""
     if not os.path.exists(README_PATH):
-        print("README.md not found!")
+        print(f"⚠️ Error: README.md not found at {README_PATH}")
         return
 
     total_size = get_total_raw_size()
