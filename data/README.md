@@ -6,7 +6,7 @@ This directory contains all datasets used in the **Sales-Insight** project. The 
 ## 📂 data Directory Structure
 ```
 📁 data/
-│── 📄 README.md (821 B)
+│── 📄 README.md (784 B)
 │── 📁 interim/
 │── 📁 processed/
 │── 📁 raw/
