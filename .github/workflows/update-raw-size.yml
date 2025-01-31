@@ -15,6 +15,9 @@ jobs:
         with:
           token: ${{ secrets.PAT }}  # Use PAT for authentication
 
+      - name: Debug Event
+        run: echo "Workflow triggered by: ${{ github.event_name }}"
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -26,10 +29,29 @@ jobs:
       - name: Run Update Raw Size Script
         run: python scripts/update_raw_size.py
 
-      - name: Commit & Push Changes
+      - name: Debug Git Status (Before Changes)
+        run: git status
+
+      - name: Debug Git Diff (Before Changes)
+        run: git diff
+
+      - name: Stage Changes
+        run: git add data/README.md
+
+      - name: Debug Git Status (After Staging)
+        run: git status
+
+      - name: Commit Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/README.md
           git commit -m "🔄 Auto-update raw data size in README" || echo "No changes to commit"
-          git push origin HEAD:main  # Use PAT for authentication
+
+      - name: Debug Git Status (After Commit)
+        run: git status
+
+      - name: Push Changes
+        run: git push origin HEAD:main  # Use PAT for authentication
+
+      - name: Debug Git Log
+        run: git log -1  # Show the latest commit
