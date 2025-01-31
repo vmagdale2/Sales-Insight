@@ -60,7 +60,7 @@ def generate_tree_with_icons(directory, ignore_patterns, prefix=""):
 
 
 # Define paths
-root_directory = "."
+root_directory = "."  # Current directory
 data_directory = os.path.join(root_directory, "data")
 gitignore_path = os.path.join(root_directory, ".gitignore")
 
@@ -77,22 +77,26 @@ if not os.path.exists(data_directory):
 # Generate folder structure for the data directory
 folder_structure_data = f"```\n📁 data/\n" + generate_tree_with_icons(data_directory, ignore_patterns) + "```"
 
-# Define the content for data/README.md
-readme_content_data = f"""# data Directory Documentation
+# Read the existing content of data/README.md
+readme_path = os.path.join(data_directory, "README.md")
+with open(readme_path, "r", encoding="utf-8") as file:
+    readme_content = file.read()
 
-This document provides details about the datasets used in the **Sales-Insight** project.
+# Split the content into two parts: before and after the folder structure section
+split_marker_start = "## 📂 data Directory Structure"
+split_marker_end = "## Data Sources"
 
-## 📂 data Directory Structure
-{folder_structure_data}
+# Split the content
+before_structure = readme_content.split(split_marker_start)[0]
+after_structure = readme_content.split(split_marker_end)[1]
 
-📌 **Guidelines:**  
-- Do not modify raw data files.  
-- Processed data should be stored in the `processed/` folder.  
-- For project objectives and analysis, see the [Main README](../README.md).
-"""
+# Combine the parts with the new folder structure in between
+updated_readme_content = (
+    f"{before_structure}{split_marker_start}\n{folder_structure_data}\n{split_marker_end}{after_structure}"
+)
 
-# Write the updated content to data/README.md
-with open(os.path.join(data_directory, "README.md"), "w", encoding="utf-8") as file:
-    file.write(readme_content_data)
+# Write the updated content back to data/README.md
+with open(readme_path, "w", encoding="utf-8") as file:
+    file.write(updated_readme_content)
 
 print("✅ data/README.md has been updated, excluding ignored files from .gitignore!")

@@ -1,11 +1,12 @@
-# data Directory Documentation
+# Data Directory Documentation
 
-This document provides details about the datasets used in the **Sales-Insight** project.
+## Overview 
+This directory contains all datasets used in the **Sales-Insight** project. The data is organized into different subdirectories based on its processing stage. Below is an explanation of the structure and contents. 
 
 ## 📂 data Directory Structure
 ```
 📁 data/
-│── 📄 README.md (261 B)
+│── 📄 README.md (821 B)
 │── 📁 interim/
 │── 📁 processed/
 │── 📁 raw/
@@ -17,11 +18,7 @@ This document provides details about the datasets used in the **Sales-Insight** 
 │   └── 📄 store_names.csv (3.41 KB)
 └── 📁 reference/
 ```
+## Data Sources
 
-📌 **Guidelines:**  
-- Do not modify raw data files.  
-- Processed data should be stored in the `processed/` folder.  
-- For project objectives and analysis, see the [Main README](../README.md).
-
-# Test
+## Data Details
 
