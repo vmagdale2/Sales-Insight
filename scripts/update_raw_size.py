@@ -27,7 +27,7 @@ def get_total_raw_size():
     return f"{total_size / (1024 * 1024):.2f} MB"
 
 def update_readme():
-    """Replaces 'Size: X MB' in README.md with the total size of raw/ folder."""
+    """Replaces '**Size:** X MB' in README.md with the total size of raw/ folder."""
     if not os.path.exists(README_PATH):
         print(f"⚠️ Error: README.md not found at {README_PATH}")
         return
@@ -40,7 +40,7 @@ def update_readme():
     with open(README_PATH, "w", encoding="utf-8") as f:
         for line in lines:
             if "**Size:** X MB" in line and "data/raw/" in line:
-                line = line.replace("-**Size:** X MB", f"**Size:** {total_size}")
+                line = line.replace("**Size:** X MB", f"**Size:** {total_size}")
             f.write(line)
 
     print(f"✅ README.md updated: Total raw data size = {total_size}")
