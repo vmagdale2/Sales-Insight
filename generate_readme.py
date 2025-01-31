@@ -60,7 +60,7 @@ def generate_tree_with_icons(directory, ignore_patterns, prefix=""):
 
 
 # Define paths
-root_directory = "Sales-Insight"
+root_directory = "."
 data_directory = os.path.join(root_directory, "data")
 gitignore_path = os.path.join(root_directory, ".gitignore")
 
