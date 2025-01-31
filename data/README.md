@@ -28,8 +28,9 @@ This directory contains all datasets used in the **Sales-Insight** project. The 
 - **Description:** Cleaned and transformed datasets ready for analysis.
 - **Modifications:**
   - ✅ Null values handled
-  - ✅ Feature engineering applied
-  - ✅ Data normalization/scaling
+  - ✅ Data normalization/scaling 
+  - ✅ Uniform formatting
+  - ✅ Duplicates handled 
 
 ### 📂 4. Interim Data
 - **Location:** `📂 data/interim/`
@@ -51,7 +52,7 @@ Please install and load all required dictionaries for your notebook environment.
   ```
   !pip install pandas
   ```
-```aiignore
+```
 import pandas as pd
 ```
 The following Python script demonstrates how to load six datasets using `pandas`. Update the file paths accordingly if your datasets are stored in a different location.
