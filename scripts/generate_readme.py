@@ -84,7 +84,7 @@ with open(readme_path, "r", encoding="utf-8") as file:
 
 # Split the content into two parts: before and after the folder structure section
 split_marker_start = "## 📂 data Directory Structure"
-split_marker_end = "## Data Sources"
+split_marker_end = "## 📌 Data Sources"
 
 # Split the content
 before_structure = readme_content.split(split_marker_start)[0]

@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Script to Update data README
         id: run_script
-        run: python generate_readme.py
+        run: python scripts/generate_readme.py
 
       - name: Commit & Push Changes
         run: |
