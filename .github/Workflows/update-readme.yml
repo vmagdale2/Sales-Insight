@@ -1,0 +1,36 @@
+name: Update Data README
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt || echo "No dependencies needed"
+
+      - name: Run Script to Update Data README
+        run: python generate_readme.py
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add data/README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Auto-update data README"
+          git push
