@@ -61,7 +61,7 @@ def generate_tree_with_icons(directory, ignore_patterns, prefix=""):
 
 # Define paths
 root_directory = "Sales-Insight"
-data_directory = os.path.join(root_directory, "Data")
+data_directory = os.path.join(root_directory, "data")
 gitignore_path = os.path.join(root_directory, ".gitignore")
 
 # Load ignored file patterns
@@ -69,18 +69,18 @@ ignore_patterns = load_gitignore_patterns(gitignore_path)
 
 # Check if data directory exists
 if not os.path.exists(data_directory):
-    print("⚠️ Error: The 'Data/' directory does not exist.")
+    print("⚠️ Error: The 'data/' directory does not exist.")
     exit()
 
 # Generate folder structure for the data directory
-folder_structure_data = f"```\n📁 Data/\n" + generate_tree_with_icons(data_directory, ignore_patterns) + "```"
+folder_structure_data = f"```\n📁 data/\n" + generate_tree_with_icons(data_directory, ignore_patterns) + "```"
 
 # Define the content for data/README.md
-readme_content_data = f"""# Data Directory Documentation
+readme_content_data = f"""# data Directory Documentation
 
 This document provides details about the datasets used in the **Sales-Insight** project.
 
-## 📂 Data Directory Structure
+## 📂 data Directory Structure
 {folder_structure_data}
 
 📌 **Guidelines:**  
@@ -89,8 +89,8 @@ This document provides details about the datasets used in the **Sales-Insight** 
 - For project objectives and analysis, see the [Main README](../README.md).
 """
 
-# Write the updated content to Data/README.md
+# Write the updated content to data/README.md
 with open(os.path.join(data_directory, "README.md"), "w", encoding="utf-8") as file:
     file.write(readme_content_data)
 
-print("✅ Data/README.md has been updated, excluding ignored files from .gitignore!")
+print("✅ data/README.md has been updated, excluding ignored files from .gitignore!")

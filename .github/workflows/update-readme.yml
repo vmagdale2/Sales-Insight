@@ -1,4 +1,4 @@
-name: Update Data README
+name: Update data README
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt || echo "No dependencies needed"
 
-      - name: Run Script to Update Data README
+      - name: Run Script to Update data README
         id: run_script
         run: python generate_readme.py
 
