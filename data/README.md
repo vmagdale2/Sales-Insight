@@ -24,7 +24,7 @@ This directory contains all datasets used in the **Sales-Insight** project. The 
 - **Location:** `📂 data/raw/`
 - **Description:** Original data files obtained from [source].
 - **Formats:** CSV
-- **Size:** **Size:** X MB
+- **Size:** X MB
 
 ### 📂 2. Processed Data
 - **Location:** `📂 data/processed/`
