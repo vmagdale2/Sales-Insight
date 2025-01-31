@@ -69,7 +69,9 @@ ignore_patterns = load_gitignore_patterns(gitignore_path)
 
 # Check if data directory exists
 if not os.path.exists(data_directory):
-    print("⚠️ Error: The 'data/' directory does not exist.")
+    print(f"⚠️ Error: The 'data/' directory does not exist. Checked path: {data_directory}")
+    print(f"📂 Current working directory: {os.getcwd()}")
+    print(f"📁 Folders found in {os.getcwd()}: {os.listdir(os.getcwd())}")
     exit()
 
 # Generate folder structure for the data directory
