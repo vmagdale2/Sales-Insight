@@ -40,7 +40,7 @@ def update_readme():
     with open(README_PATH, "w", encoding="utf-8") as f:
         for line in lines:
             if "**Size:** X MB" in line and "data/raw/" in line:
-                line = line.replace("Size: X MB", f"**Size:** {total_size}")
+                line = line.replace("-**Size:** X MB", f"**Size:** {total_size}")
             f.write(line)
 
     print(f"✅ README.md updated: Total raw data size = {total_size}")
