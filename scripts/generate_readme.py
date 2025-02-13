@@ -68,7 +68,7 @@ if not os.path.exists(data_directory):
 
 folder_structure_data = f"```\n📁 data/\n" + generate_tree_with_icons(data_directory, ignore_patterns) + "```"
 
-readme_path = os.path.join(data_directory, "README.md")
+readme_path = os.path.join(data_directory, "data_exploration_and_cleaning_results.md")
 with open(readme_path, "r", encoding="utf-8") as file:
     readme_content = file.read()
 
@@ -85,4 +85,4 @@ updated_readme_content = (
 with open(readme_path, "w", encoding="utf-8") as file:
     file.write(updated_readme_content)
 
-print("✅ data/README.md has been updated, excluding ignored files from .gitignore!")
+print("✅ data/data_exploration_and_cleaning_results.md has been updated, excluding ignored files from .gitignore!")
