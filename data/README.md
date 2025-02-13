@@ -6,7 +6,7 @@ This directory contains all datasets used in the **Sales-Insight** project. The 
 ## 📂 data Directory Structure
 ```
 📁 data/
-│── 📄 README.md (7.57 KB)
+│── 📄 README.md (7.64 KB)
 │── 📁 interim/
 │   │── 📄 README.md (1.09 KB)
 │   │── 📄 city_names_1.csv (510 B)
@@ -19,13 +19,20 @@ This directory contains all datasets used in the **Sales-Insight** project. The 
 │   │── 📄 sales_2.csv (2.50 MB)
 │   │── 📄 sales_2_final.csv (2.50 MB)
 │   └── 📄 store_names_3.csv (3.27 KB)
-└── 📁 raw/
-    │── 📄 city_names.csv (723 B)
-    │── 📄 product_hierarchy.csv (46.99 KB)
-    │── 📄 product_names.csv (16.76 KB)
-    │── 📄 sales.csv (2.26 MB)
-    │── 📄 store_cities.csv (2.71 KB)
-    └── 📄 store_names.csv (3.27 KB)
+│── 📁 processed/
+│   │── 📄 city_names_c.csv (501 B)
+│   │── 📄 product_hierarchy_c.csv (43.13 KB)
+│   │── 📄 product_names_c.csv (16.76 KB)
+│   │── 📄 sales_c.csv (2.50 MB)
+│   └── 📄 store_names_c.csv (3.27 KB)
+│── 📁 raw/
+│   │── 📄 product_hierarchy.csv (46.99 KB)
+│   │── 📄 product_names.csv (16.76 KB)
+│   │── 📄 sales.csv (2.26 MB)
+│   │── 📄 store_cities.csv (2.71 KB)
+│   └── 📄 store_names.csv (3.27 KB)
+└── 📁 reference/
+    └── 📄 city_names.csv (723 B)
 ```
 ## 📌 Data Sources
 
