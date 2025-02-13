@@ -8,14 +8,17 @@ This directory contains all datasets used in the **Sales-Insight** project. The 
 📁 data/
 │── 📄 README.md (7.57 KB)
 │── 📁 interim/
-│   │── 📄 README.md (652 B)
+│   │── 📄 README.md (1.09 KB)
 │   │── 📄 city_names_1.csv (510 B)
-│   │── 📄 city_names_1_numbers_cleaned.csv (510 B)
+│   │── 📄 city_names_2.csv (510 B)
+│   │── 📄 city_names_3.csv (501 B)
 │   │── 📄 product_hierarchy_1.csv (43.13 KB)
-│   │── 📄 product_hierarchy_1_numbers_cleaned.csv (43.13 KB)
+│   │── 📄 product_hierarchy_2.csv (43.13 KB)
+│   │── 📄 product_names_3.csv (16.76 KB)
 │   │── 📄 sales_1.csv (2.50 MB)
-│   │── 📄 sales_1_date_formatted.csv (2.50 MB)
-│   └── 📄 sales_1_date_formatted_numbers_cleaned.csv (2.50 MB)
+│   │── 📄 sales_2.csv (2.50 MB)
+│   │── 📄 sales_2_final.csv (2.50 MB)
+│   └── 📄 store_names_3.csv (3.27 KB)
 └── 📁 raw/
     │── 📄 city_names.csv (723 B)
     │── 📄 product_hierarchy.csv (46.99 KB)
