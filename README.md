@@ -37,3 +37,33 @@ For detailed steps, please refer to the ['Data_Cleaning_Public.ipynb](notebooks/
 
 If you wish to review the scripts used to perform the cleaning steps individually, please refer to the ['scripts/data_cleaning'](scripts/data_cleaning) directory. 
 
+## Store & Product Performance Segmentation 🏬📊
+
+### 📌 Overview
+This project identifies **high-performing stores & products** and clusters them using **K-Means Clustering**.
+
+### 📂 Project Structure
+- `notebooks/3_store_segmentation.ipynb`: Notebook with analysis & visualization.
+- `scripts/store_segmentation.py`: Python script for automated clustering.
+- `reports/store_segmentation_report.pdf`: Summary report with store insights.
+
+## Stock Optimization & Demand Forecasting 📉
+
+### 📌 Overview
+This project predicts **future sales trends** and helps optimize stock replenishment using **time series forecasting**.
+
+### 📂 Project Structure
+- `notebooks/2_stock_forecasting.ipynb`: Jupyter Notebook with full analysis.
+- `scripts/stock_forecasting.py`: Python script for automated forecasting.
+- `reports/stock_forecasting_report.pdf`: Summary report with insights.
+
+## Price Elasticity of Demand & Revenue Optimization 📊
+
+### 📌 Overview
+This project calculates **price elasticity** for products to optimize pricing strategies and maximize revenue.
+
+### 📂 Project Structure
+- `notebooks/1_price_elasticity.ipynb`: Jupyter Notebook with detailed analysis.
+- `scripts/price_elasticity.py`: Python script for automated computation.
+- `reports/price_elasticity_results.csv`: Elasticity data.
+- `reports/elasticity_distribution.png`: Elasticity histogram.
