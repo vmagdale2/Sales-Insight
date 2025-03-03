@@ -65,3 +65,14 @@ This project calculates **price elasticity** for products to optimize pricing st
 - `scripts/price_elasticity.py`: Python script for automated computation.
 - `results/price_elasticity_results.csv`: Elasticity data.
 - `images/data_analysis/elasticity_distribution.png`: Elasticity histogram.
+
+## Retail Demand Prediction 📈
+
+### 📌 Overview
+This project predicts **future sales** using **time series forecasting models**.
+
+### 📂 Project Structure
+- `notebooks/1_retail_demand_prediction.ipynb`: Notebook with full analysis.
+- `scripts/retail_demand_prediction.py`: Python script for automation.
+- `reports/forecast_results.csv`: Forecasted sales.
+- `reports/forecast_chart.png`: Visualization.
