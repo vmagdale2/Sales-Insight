@@ -39,8 +39,7 @@ If you wish to review the scripts used to perform the cleaning steps individuall
 
 ## Store & Product Performance Segmentation 🏬📊
 
-### 📌 Overview
-This project identifies **high-performing stores & products** and clusters them using **K-Means Clustering**.
+Identifies **high-performing stores & products** and clusters them using **K-Means Clustering**.
 
 ### 📂 Project Structure
 - `notebooks/3_store_segmentation.ipynb`: Notebook with analysis & visualization.
@@ -48,8 +47,7 @@ This project identifies **high-performing stores & products** and clusters them 
 
 ## Stock Optimization & Demand Forecasting 📉
 
-### 📌 Overview
-This project predicts **future sales trends** and helps optimize stock replenishment using **time series forecasting**.
+Predicts **future sales trends** and helps optimize stock replenishment using **time series forecasting**.
 
 ### 📂 Project Structure
 - `notebooks/2_stock_forecasting.ipynb`: Jupyter Notebook with full analysis.
@@ -57,8 +55,7 @@ This project predicts **future sales trends** and helps optimize stock replenish
 
 ## Price Elasticity of Demand & Revenue Optimization 📊
 
-### 📌 Overview
-This project calculates **price elasticity** for products to optimize pricing strategies and maximize revenue.
+Calculates **price elasticity** for products to optimize pricing strategies and maximize revenue.
 
 ### 📂 Project Structure
 - `notebooks/1_price_elasticity.ipynb`: Jupyter Notebook with detailed analysis.
@@ -68,8 +65,7 @@ This project calculates **price elasticity** for products to optimize pricing st
 
 ## Retail Demand Prediction 📈
 
-### 📌 Overview
-This project predicts **future sales** using **time series forecasting models**.
+Predicts **future sales** using **time series forecasting models**.
 
 ### 📂 Project Structure
 - `notebooks/1_retail_demand_prediction.ipynb`: Notebook with full analysis.
