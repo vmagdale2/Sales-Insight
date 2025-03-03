@@ -45,7 +45,6 @@ This project identifies **high-performing stores & products** and clusters them 
 ### 📂 Project Structure
 - `notebooks/3_store_segmentation.ipynb`: Notebook with analysis & visualization.
 - `scripts/store_segmentation.py`: Python script for automated clustering.
-- `reports/store_segmentation_report.pdf`: Summary report with store insights.
 
 ## Stock Optimization & Demand Forecasting 📉
 
@@ -55,7 +54,6 @@ This project predicts **future sales trends** and helps optimize stock replenish
 ### 📂 Project Structure
 - `notebooks/2_stock_forecasting.ipynb`: Jupyter Notebook with full analysis.
 - `scripts/stock_forecasting.py`: Python script for automated forecasting.
-- `reports/stock_forecasting_report.pdf`: Summary report with insights.
 
 ## Price Elasticity of Demand & Revenue Optimization 📊
 
@@ -65,5 +63,5 @@ This project calculates **price elasticity** for products to optimize pricing st
 ### 📂 Project Structure
 - `notebooks/1_price_elasticity.ipynb`: Jupyter Notebook with detailed analysis.
 - `scripts/price_elasticity.py`: Python script for automated computation.
-- `reports/price_elasticity_results.csv`: Elasticity data.
-- `reports/elasticity_distribution.png`: Elasticity histogram.
+- `results/price_elasticity_results.csv`: Elasticity data.
+- `images/data_analysis/elasticity_distribution.png`: Elasticity histogram.
