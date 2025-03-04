@@ -23,18 +23,10 @@ def mount_drive():
 
 ### 📌 2️⃣ FLEXIBLE FILE PATH HANDLING ###
 def load_data(filepath, usecols=None, parse_dates=None):
-    """
-    Loads a dataset from CSV and handles errors gracefully.
-
-    - `filepath`: Full path to the CSV file.
-    - `usecols`: (Optional) List of columns to load.
-    - `parse_dates`: (Optional) List of date columns to parse.
-
-    Returns a Pandas DataFrame or an empty DataFrame if the file is missing.
-    """
+    """Loads a dataset from CSV and handles missing file errors gracefully."""
     if not os.path.exists(filepath):
         logging.error(f"❌ ERROR: File not found - {filepath}")
-        return pd.DataFrame()  # Return an empty DataFrame to prevent script crashes
+        return pd.DataFrame()  # ✅ Return an empty DataFrame instead of None
 
     try:
         df = pd.read_csv(filepath, usecols=usecols, parse_dates=parse_dates)
