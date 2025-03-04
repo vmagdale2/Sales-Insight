@@ -63,12 +63,13 @@ Calculates **price elasticity** for products to optimize pricing strategies and 
 - `results/price_elasticity_results.csv`: Elasticity data.
 - `images/data_analysis/elasticity_distribution.png`: Elasticity histogram.
 
-## Retail Demand Prediction 📈
+## 🛒 Market Basket Analysis (Association Rules)
 
-Predicts **future sales** using **time series forecasting models**.
+Identifies **frequently bought product pairs** using **Association Rule Mining (FP-Growth)**.  
+Results can be used for **product bundling, pricing strategies, and targeted marketing**.
 
 ### 📂 Project Structure
-- `notebooks/1_retail_demand_prediction.ipynb`: Notebook with full analysis.
-- `scripts/retail_demand_prediction.py`: Python script for automation.
-- `reports/forecast_results.csv`: Forecasted sales.
-- `reports/forecast_chart.png`: Visualization.
+- `notebooks/market_basket_analysis.ipynb`: Notebook with full analysis.
+- `scripts/market_basket_analysis.py`: Python script for automation.
+- `results/market_basket_rules.csv`: Forecasted sales.
+
