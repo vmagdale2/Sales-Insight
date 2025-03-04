@@ -30,6 +30,12 @@ def load_data(filepath, usecols=None, parse_dates=None):
 
     try:
         df = pd.read_csv(filepath, usecols=usecols, parse_dates=parse_dates)
+
+        # ✅ Fix: Explicitly parse dates
+        if parse_dates:
+            for date_col in parse_dates:
+                df[date_col] = pd.to_datetime(df[date_col], format="%Y-%m-%d", errors="coerce")
+
         logging.info(f"✅ Successfully loaded {filepath}")
         return df
     except Exception as e:
