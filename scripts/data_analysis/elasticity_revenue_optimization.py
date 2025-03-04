@@ -1,29 +1,33 @@
-sales_df['date'] = pd.to_datetime(sales_df['date'])
-sales_df['week'] = sales_df['date'].dt.isocalendar().week
-weekly_sales = sales_df.groupby(["product_id", "week"]).agg({
-    "sales": "sum",
-    "price": "mean"
-}).reset_index()
-
-import numpy as np
 import pandas as pd
+import numpy as np
 
-elasticity_results = []
 
-for product in weekly_sales["product_id"].unique():
-    product_data = weekly_sales[weekly_sales["product_id"] == product].sort_values("week").copy()
+def load_data(filepath):
+    """Loads sales transaction data."""
+    return pd.read_csv(filepath, parse_dates=["date"])
 
-    product_data.loc[:, "prev_sales"] = product_data["sales"].shift(1)
-    product_data.loc[:, "prev_price"] = product_data["price"].shift(1)
 
-    product_data = product_data.dropna().copy()
+def calculate_elasticity(df):
+    """Computes price elasticity using % change in quantity & price."""
+    df["week"] = df["date"].dt.isocalendar().week
+    weekly_sales = df.groupby(["product_id", "week"]).agg({"sales": "sum", "price": "mean"}).reset_index()
 
-    product_data.loc[:, "percent_change_sales"] = (product_data["sales"] - product_data["prev_sales"]) / product_data["prev_sales"]
-    product_data.loc[:, "percent_change_price"] = (product_data["price"] - product_data["prev_price"]) / product_data["prev_price"]
+    # Compute % change in price and quantity
+    weekly_sales["prev_sales"] = weekly_sales.groupby("product_id")["sales"].shift(1)
+    weekly_sales["prev_price"] = weekly_sales.groupby("product_id")["price"].shift(1)
 
-    product_data.loc[:, "elasticity"] = product_data["percent_change_sales"] / product_data["percent_change_price"]
+    weekly_sales.dropna(inplace=True)
+    weekly_sales["price_change"] = (weekly_sales["price"] - weekly_sales["prev_price"]) / weekly_sales["prev_price"]
+    weekly_sales["quantity_change"] = (weekly_sales["sales"] - weekly_sales["prev_sales"]) / weekly_sales["prev_sales"]
 
-    elasticity_results.append(product_data.loc[:, ["product_id", "week", "elasticity"]])
+    # Compute price elasticity
+    weekly_sales["elasticity"] = weekly_sales["quantity_change"] / weekly_sales["price_change"]
+    return weekly_sales[["product_id", "week", "elasticity"]]
 
-elasticity_df = pd.concat(elasticity_results, ignore_index=True)
 
+if __name__ == "__main__":
+    sales_df = load_data("data/Sales.csv")
+    elasticity_results = calculate_elasticity(sales_df)
+
+    elasticity_results.to_csv("reports/price_elasticity_results.csv", index=False)
+    print("✅ Price Elasticity Analysis Completed! Results saved.")

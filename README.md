@@ -73,3 +73,25 @@ Results can be used for **product bundling, pricing strategies, and targeted mar
 - `scripts/market_basket_analysis.py`: Python script for automation.
 - `results/market_basket_rules.csv`: Forecasted sales.
 
+## 📊 Customer Segmentation (Clustering) 🏷️
+
+
+Uses **clustering algorithms** to group customers based on **purchasing behavior**, enabling **personalized marketing** and **better customer engagement strategies**.
+
+### 🛠 How It Works
+1. **Load Transaction Data** (`Sales.csv`)
+2. **Engineer Customer Features** (Total spend, visit frequency, product diversity)
+3. **Apply K-Means Clustering** to group customers into **segments**.
+4. **Analyze & Label Segments** based on purchasing patterns.
+5. **Save & Visualize Results**.
+
+## 🛑 Churn Prediction (Classification) 🔍
+
+Predicts **customer churn** using **machine learning classification models**, allowing businesses to **retain at-risk customers** by identifying them **before they leave**.
+
+###5 🛠 How It Works
+1. **Load Transaction Data** (`Sales.csv`)
+2. **Define Churn Labels** (Customers inactive for X days = Churned)
+3. **Engineer Features** (Purchase frequency, total spend, last visit date)
+4. **Train a Machine Learning Model** (Random Forest, Logistic Regression)
+5. **Predict Customer Churn** and analyze model accuracy.

@@ -1,31 +1,27 @@
+import pandas as pd
 from sklearn.cluster import KMeans
-import numpy as np
 
-# Calculate total sales per store
-store_sales = merged_df.groupby('store_id')['sales'].sum().reset_index()
 
-# Prepare data for KMeans
-X = store_sales[['sales']]
+def load_data(sales_filepath, store_filepath):
+    """Loads sales and store attribute data."""
+    sales_df = pd.read_csv(sales_filepath)
+    store_df = pd.read_csv(store_filepath)
 
-# Initialize and fit KMeans with 3 clusters (high, medium, low)
-kmeans = KMeans(n_clusters=3, random_state=0)
-kmeans.fit(X)
+    # Aggregate store-level sales
+    store_sales = sales_df.groupby("store_id").agg({"sales": "sum", "revenue": "sum"}).reset_index()
+    return store_sales.merge(store_df, on="store_id")
 
-# Add cluster labels to the store_sales DataFrame
-store_sales['cluster'] = kmeans.labels_
 
-# Map cluster labels to performance categories
-performance_mapping = {
-    0: 'Low',  # Assuming cluster 0 represents low performers
-    1: 'Medium',# Assuming cluster 1 represents medium performers
-    2: 'High'  # Assuming cluster 2 represents high performers
-}
-store_sales['performance_category'] = store_sales['cluster'].map(performance_mapping)
+def run_kmeans(df, n_clusters=3):
+    """Performs K-Means clustering on store data."""
+    model = KMeans(n_clusters=n_clusters, random_state=42)
+    df["Cluster"] = model.fit_predict(df[["sales", "revenue", "store_size"]])
+    return df
 
-# Print the results
-print(store_sales.head())
 
-# You can further analyze the clusters, e.g., by examining the average sales within each cluster.
-cluster_stats = store_sales.groupby('performance_category')['sales'].agg(['mean', 'count'])
-print("\nCluster Statistics:")
-cluster_stats
+if __name__ == "__main__":
+    store_data = load_data("data/Sales.csv", "data/store_cities.csv")
+    segmented_stores = run_kmeans(store_data)
+
+    segmented_stores.to_csv("reports/store_segments.csv", index=False)
+    print("✅ Store Segmentation Completed! Results saved.")
