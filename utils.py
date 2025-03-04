@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import os
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -12,28 +13,48 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-### 📌 1️⃣ DATA LOADING & SAVING ###
+### 📌 1️⃣ GOOGLE DRIVE SUPPORT ###
+def mount_drive():
+    """Mounts Google Drive for accessing CSV files."""
+    from google.colab import drive
+    drive.mount('/content/drive')
+    print("✅ Google Drive Mounted. Use absolute paths for loading data.")
+
+
+### 📌 2️⃣ FLEXIBLE FILE PATH HANDLING ###
 def load_data(filepath, usecols=None, parse_dates=None):
-    """Loads a dataset from CSV, with optional column filtering & date parsing."""
+    """
+    Loads a dataset from CSV and handles errors gracefully.
+
+    - `filepath`: Full path to the CSV file.
+    - `usecols`: (Optional) List of columns to load.
+    - `parse_dates`: (Optional) List of date columns to parse.
+
+    Returns a Pandas DataFrame or an empty DataFrame if the file is missing.
+    """
+    if not os.path.exists(filepath):
+        logging.error(f"❌ ERROR: File not found - {filepath}")
+        return pd.DataFrame()  # Return an empty DataFrame to prevent script crashes
+
     try:
         df = pd.read_csv(filepath, usecols=usecols, parse_dates=parse_dates)
-        logging.info(f"Successfully loaded {filepath}")
+        logging.info(f"✅ Successfully loaded {filepath}")
         return df
     except Exception as e:
-        logging.error(f"Error loading {filepath}: {e}")
-        return None
+        logging.error(f"❌ ERROR loading {filepath}: {e}")
+        return pd.DataFrame()
 
 
 def save_results(df, filepath):
-    """Saves a DataFrame to CSV."""
+    """Saves a DataFrame to CSV and handles errors."""
     try:
         df.to_csv(filepath, index=False)
         logging.info(f"✅ Results saved to {filepath}")
     except Exception as e:
-        logging.error(f"Error saving {filepath}: {e}")
+        logging.error(f"❌ ERROR saving {filepath}: {e}")
 
 
-### 📌 2️⃣ DATA VALIDATION ###
+### 📌 3️⃣ DATA VALIDATION ###
 def check_missing_values(df):
     """Returns columns with missing values and their percentage."""
     missing = df.isnull().sum()
@@ -46,7 +67,7 @@ def check_duplicates(df):
     return df.duplicated().sum()
 
 
-### 📌 3️⃣ DATA PREPROCESSING ###
+### 📌 4️⃣ DATA PREPROCESSING ###
 def preprocess_sales_data(df):
     """Handles missing values and ensures date column is in datetime format."""
     if "date" in df.columns:
@@ -61,7 +82,7 @@ def create_transaction_matrix(df):
     return basket_df > 0  # Convert to Boolean
 
 
-### 📌 4️⃣ FEATURE ENGINEERING ###
+### 📌 5️⃣ FEATURE ENGINEERING ###
 def create_customer_features(df):
     """Creates aggregated customer-level features."""
     return df.groupby("store_id").agg({
@@ -88,7 +109,7 @@ def define_churn_labels(df, churn_days=90):
     return customer_data.drop(columns=["date"])
 
 
-### 📌 5️⃣ MACHINE LEARNING HELPERS ###
+### 📌 6️⃣ MACHINE LEARNING HELPERS ###
 def train_random_forest(X, y):
     """Trains a Random Forest classifier and returns the trained model."""
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -104,7 +125,7 @@ def scale_features(df):
     return pd.DataFrame(scaled_features, columns=df.columns)
 
 
-### 📌 6️⃣ MODEL EVALUATION ###
+### 📌 7️⃣ MODEL EVALUATION ###
 def evaluate_classification_model(model, X_test, y_test):
     """Evaluates a classification model using accuracy and classification report."""
     y_pred = model.predict(X_test)
@@ -120,7 +141,7 @@ def model_feature_importance(model, feature_names):
         by="Importance", ascending=False)
 
 
-### 📌 7️⃣ TIME SERIES FORECASTING ###
+### 📌 8️⃣ TIME SERIES FORECASTING ###
 def train_prophet_model(df, periods=30):
     """Trains a Prophet model and forecasts the next N days."""
     df = df.rename(columns={"date": "ds", "sales": "y"})
@@ -131,7 +152,7 @@ def train_prophet_model(df, periods=30):
     return forecast
 
 
-### 📌 8️⃣ ASSOCIATION RULE MINING ###
+### 📌 9️⃣ ASSOCIATION RULE MINING ###
 def run_fpgrowth(df, min_support=0.1):
     """Runs FP-Growth on a Boolean transaction matrix."""
     return fpgrowth(df, min_support=min_support, use_colnames=True)
@@ -141,15 +162,3 @@ def generate_association_rules(frequent_itemsets):
     """Generates association rules based on lift metric."""
     rules = association_rules(frequent_itemsets, metric="lift", min_threshold=1)
     return rules[rules["antecedents"].apply(lambda x: len(x) == 1) & rules["consequents"].apply(lambda x: len(x) == 1)]
-
-
-### 📌 9️⃣ AUTOMATED REPORTING ###
-def generate_summary_report(df):
-    """Generates a basic summary report for the dataset."""
-    summary = {
-        "Total Rows": len(df),
-        "Total Columns": len(df.columns),
-        "Missing Values": check_missing_values(df).to_dict(),
-        "Duplicates": check_duplicates(df)
-    }
-    return summary
