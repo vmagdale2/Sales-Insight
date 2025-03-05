@@ -29,8 +29,12 @@ def load_data(filepath, usecols=None, parse_dates=None):
         return pd.DataFrame()  # ✅ Return an empty DataFrame instead of None
 
     try:
-        df = pd.read_csv(filepath, usecols=usecols, parse_dates=parse_dates)
+        df = pd.read_csv(filepath, usecols=usecols)
 
+        # ✅ Fix: Explicitly parse dates in the format YYYY-MM-DD
+        if parse_dates:
+            for date_col in parse_dates:
+                df[date_col] = pd.to_datetime(df[date_col], format="%Y-%m-%d", errors="coerce")
         # ✅ Fix: Explicitly parse dates
         if parse_dates:
             for date_col in parse_dates:
