@@ -37,6 +37,8 @@ For detailed steps, please refer to the ['Data_Cleaning_Public.ipynb](notebooks/
 
 If you wish to review the scripts used to perform the cleaning steps individually, please refer to the ['scripts/data_cleaning'](scripts/data_cleaning) directory. 
 
+# Analysis
+
 ## Store & Product Performance Segmentation 🏬📊
 
 Identifies **high-performing stores & products** and clusters them using **K-Means Clustering**.
@@ -85,13 +87,8 @@ Uses **clustering algorithms** to group customers based on **purchasing behavior
 4. **Analyze & Label Segments** based on purchasing patterns.
 5. **Save & Visualize Results**.
 
-## 🛑 Churn Prediction (Classification) 🔍
+- `results/processed_sales.csv`: Cluster results. 
+- `notebooks/customer_segmentation.ipynb`: Notebook with full analysis. 
+- `scripts/customer_segmentation.py`: Pythonscript for automation.
 
-Predicts **customer churn** using **machine learning classification models**, allowing businesses to **retain at-risk customers** by identifying them **before they leave**.
-
-###5 🛠 How It Works
-1. **Load Transaction Data** (`Sales.csv`)
-2. **Define Churn Labels** (Customers inactive for X days = Churned)
-3. **Engineer Features** (Purchase frequency, total spend, last visit date)
-4. **Train a Machine Learning Model** (Random Forest, Logistic Regression)
-5. **Predict Customer Churn** and analyze model accuracy.
+# Results
