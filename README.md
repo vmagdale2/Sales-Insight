@@ -39,7 +39,7 @@ If you wish to review the scripts used to perform the cleaning steps individuall
 
 # Analysis
 
-## Store & Product Performance Segmentation 🏬📊
+## Store Performance Segmentation 🏬📊
 
 Identifies **high-performing stores & products** and clusters them using **K-Means Clustering**.
 
