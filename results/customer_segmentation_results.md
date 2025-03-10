@@ -90,23 +90,5 @@ The following Tableau visualizations were created to enhance understanding of th
 - Exploring additional clustering techniques like DBSCAN or Hierarchical Clustering for improved segmentation.
 
 ---
-## 📂 Repository Structure
-```bash
-├── data
-│   ├── sales_2_final.csv
-│   ├── processed_sales.csv
-├── scripts
-│   ├── customer_segmentation.py
-│   ├── utils.py
-├── visuals
-│   ├── scatter_plot.png
-│   ├── cluster_comparison_chart.png
-├── README.md
-```
-
----
 ## 📣 Final Thoughts
 This project effectively identifies key store segments that drive business performance. The insights gained can inform marketing strategies, optimize product placement, and improve overall sales growth. By integrating these insights into business decisions, companies can maximize their revenue potential while addressing the unique needs of different customer groups.
-
-🚀 **Next Step:** Integrate insights into a compelling presentation for impactful storytelling!
-
