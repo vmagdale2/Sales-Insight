@@ -1,0 +1,50 @@
+pandas
+    gdown
+    scikit-learn
+        cluster
+            KMeans
+        preprocessing
+            StandardScaler
+        model_selection
+            train_test_split
+        ensemble
+            RandomForestClassifier
+        metrics
+            accuracy_score
+            classification_report
+matplotlib
+    patches
+    cm
+    pyplot
+squarify
+seaborn
+numpy
+os
+    sys
+    logging
+scypi
+    stats
+    chi2_contingency
+google
+    colab
+    drive
+utils
+    sys
+python-dotenv
+prophet
+    prophet
+dask
+    distributed
+    Client
+    dataframe
+mlxtend
+    frequent_patterns
+        fpgrowth
+        association_rules
+
+
+
+
+
+
+

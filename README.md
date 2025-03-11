@@ -123,7 +123,7 @@ Exploratory visualizations helped reveal critical insights about:
 ## 📋 Project Deliverables
 📄 **[Sales Insights Report](reports/Report.pdf)**  
 📊 **[Sales Insights Presentation](reports/Sales_Insights_Presentation.pdf)**  
-📈 **[Tableau Dashboard](https://github.com/vmagdale2/Sales-Insight)**  
+📈 **[Tableau Dashboard](https://github.com/vmagdale2/Sales-Insight)**
 
 ---
 
