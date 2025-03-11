@@ -1,2 +1,17 @@
 
 private_notebooks/
+.env
+.json
+.db
+#.ipynb_checkpoints/
+.log
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+venv/
+.env/
+.envrc
+.idea/
+.vscode/
