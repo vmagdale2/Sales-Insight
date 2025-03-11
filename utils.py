@@ -9,9 +9,29 @@ from prophet import Prophet
 from mlxtend.frequent_patterns import fpgrowth, association_rules
 import logging
 
+# ✅ Load environment variables
+load_dotenv()
+
 # ✅ Setup logging for debugging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+### 📌 1️⃣ FLEXIBLE FILE PATH HANDLING ###
+def load_data(filename, usecols=None, parse_dates=None):
+    """Loads a dataset from CSV and handles missing file errors gracefully."""
+    # ✅ Securely retrieve the file path from .env
+    file_path = os.path.join(os.getenv("GOOGLE_DRIVE_PATH"), filename)
+
+    if not os.path.exists(file_path):
+        logging.error(f"❌ ERROR: File not found - {file_path}")
+        return pd.DataFrame()
+
+    try:
+        df = pd.read_csv(file_path, usecols=usecols, parse_dates=parse_dates)
+        logging.info(f"✅ Successfully loaded {file_path}")
+        return df
+    except Exception as e:
+        logging.error(f"❌ ERROR loading {file_path}: {e}")
+        return pd.DataFrame()
 
 ### 📌 1️⃣ GOOGLE DRIVE SUPPORT ###
 def mount_drive():
